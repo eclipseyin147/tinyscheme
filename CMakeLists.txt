@@ -56,6 +56,9 @@ install(DIRECTORY include/
 install(TARGETS tinyscheme tinyscheme_static
         EXPORT ${PROJECT_NAME}
         INCLUDES DESTINATION "include"
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
 )
 
 #install(EXPORT ${PROJECT_NAME}
