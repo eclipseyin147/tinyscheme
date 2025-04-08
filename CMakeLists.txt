@@ -58,17 +58,26 @@ install(DIRECTORY include/
         DESTINATION include
         FILES_MATCHING PATTERN "*.h")
 
+#install(EXPORT ${PROJECT_NAME}
+#        FILE "tinyschemeTargets.cmake"
+#        NAMESPACE ${PROJECT_NAME}::
+#        DESTINATION lib/cmake/)
+#
+#include(CMakePackageConfigHelpers)
+#configure_package_config_file(
+#        "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
+#        "${PROJECT_NAME}Config.cmake"
+#        INSTALL_DESTINATION lib/cmake/
+#)
+#
+#install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+#        DESTINATION lib/cmake/)
+
 install(EXPORT ${PROJECT_NAME}
-        FILE "tinyschemeTargets.cmake"
+        FILE "${PROJECT_NAME}Config.cmake"
+        DESTINATION "lib/cmake/")
+
+install(EXPORT "${PROJECT_NAME}"
+        FILE "${PROJECT_NAME}.cmake"
         NAMESPACE ${PROJECT_NAME}::
-        DESTINATION lib/cmake/)
-
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
-        "${PROJECT_NAME}Config.cmake"
-        INSTALL_DESTINATION lib/cmake/
-)
-
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
         DESTINATION lib/cmake/)
