@@ -61,7 +61,7 @@ install(DIRECTORY include/
 install(EXPORT ${PROJECT_NAME}
         FILE "${PROJECT_NAME}Targets.cmake"
         NAMESPACE ${PROJECT_NAME}::
-        DESTINATION lib/cmake/${PROJECT_NAME})
+        DESTINATION lib/cmake/)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
