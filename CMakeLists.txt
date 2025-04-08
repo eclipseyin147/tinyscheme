@@ -75,10 +75,16 @@ install(DIRECTORY include/
 #        DESTINATION lib/cmake/)
 
 install(EXPORT ${PROJECT_NAME}
-        FILE "${PROJECT_NAME}Config.cmake"
-        DESTINATION "lib/cmake/")
-
-install(EXPORT "${PROJECT_NAME}"
-        FILE "${PROJECT_NAME}.cmake"
+        FILE "${PROJECT_NAME}Targets.cmake"
         NAMESPACE ${PROJECT_NAME}::
-        DESTINATION lib/cmake/)
+        DESTINATION "share/${PROJECT_NAME}/cmake")
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+        INSTALL_DESTINATION "share/${PROJECT_NAME}/cmake"
+)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+        DESTINATION "share/${PROJECT_NAME}/cmake")
