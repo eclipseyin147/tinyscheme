@@ -47,11 +47,28 @@ target_compile_definitions(tinyscheme_static PRIVATE USE_INTERFACE=1 STANDALONE=
 target_compile_definitions(tinyscheme        PRIVATE USE_INTERFACE=1 STANDALONE=0)
 
 
-install(EXPORT ${PROJECT_NAME}
-        FILE "${PROJECT_NAME}Config.cmake"
-        DESTINATION "lib/cmake/")
+install(TARGETS tinyscheme tinyscheme_static
+        EXPORT ${PROJECT_NAME}Targets
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        INCLUDES DESTINATION include)
 
-install(EXPORT "${PROJECT_NAME}"
-        FILE "${PROJECT_NAME}.cmake"
+install(DIRECTORY include/
+        DESTINATION include
+        FILES_MATCHING PATTERN "*.h")
+
+install(EXPORT ${PROJECT_NAME}Targets
+        FILE ${PROJECT_NAME}Targets.cmake
         NAMESPACE ${PROJECT_NAME}::
-        DESTINATION lib/cmake/)
+        DESTINATION share/${PROJECT_NAME})
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
+        "${PROJECT_NAME}Config.cmake"
+        INSTALL_DESTINATION share/${PROJECT_NAME}
+)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+        DESTINATION share/${PROJECT_NAME})
