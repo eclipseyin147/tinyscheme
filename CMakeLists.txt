@@ -52,7 +52,16 @@ install(TARGETS tinyscheme tinyscheme_static
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
-        INCLUDES DESTINATION include)
+        INCLUDES DESTINATION include
+        CONFIGURATIONS Release)
+        
+install(TARGETS tinyscheme tinyscheme_static
+        EXPORT ${PROJECT_NAME}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        INCLUDES DESTINATION include
+        CONFIGURATIONS Debug)
 
 install(DIRECTORY include/
         DESTINATION include
