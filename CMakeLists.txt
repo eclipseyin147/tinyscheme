@@ -59,7 +59,7 @@ install(DIRECTORY include/
         FILES_MATCHING PATTERN "*.h")
 
 install(EXPORT ${PROJECT_NAME}
-        FILE "${PROJECT_NAME}Targets.cmake"
+        FILE "tinyschemeTargets.cmake"
         NAMESPACE ${PROJECT_NAME}::
         DESTINATION lib/cmake/)
 
