@@ -67,8 +67,8 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
         "${PROJECT_NAME}Config.cmake"
-        INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
+        INSTALL_DESTINATION lib/cmake/
 )
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-        DESTINATION lib/cmake/${PROJECT_NAME})
+        DESTINATION lib/cmake/)
