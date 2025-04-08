@@ -45,3 +45,13 @@ endif()
 
 target_compile_definitions(tinyscheme_static PRIVATE USE_INTERFACE=1 STANDALONE=0)
 target_compile_definitions(tinyscheme        PRIVATE USE_INTERFACE=1 STANDALONE=0)
+
+
+install(EXPORT ${PROJECT_NAME}
+        FILE "${PROJECT_NAME}Config.cmake"
+        DESTINATION "lib/cmake/")
+
+install(EXPORT "${PROJECT_NAME}"
+        FILE "${PROJECT_NAME}.cmake"
+        NAMESPACE ${PROJECT_NAME}::
+        DESTINATION lib/cmake/)
