@@ -86,5 +86,7 @@ configure_package_config_file(
         INSTALL_DESTINATION "lib/cmake/"
 )
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-        DESTINATION "share/${PROJECT_NAME}/cmake")
+install(EXPORT "${PROJECT_NAME}"
+        FILE "${PROJECT_NAME}.cmake"
+        NAMESPACE ${PROJECT_NAME}::
+        DESTINATION lib/cmake/)
