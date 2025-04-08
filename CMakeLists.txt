@@ -47,21 +47,13 @@ target_compile_definitions(tinyscheme_static PRIVATE USE_INTERFACE=1 STANDALONE=
 target_compile_definitions(tinyscheme        PRIVATE USE_INTERFACE=1 STANDALONE=0)
 
 
+
 install(TARGETS tinyscheme tinyscheme_static
         EXPORT ${PROJECT_NAME}
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        INCLUDES DESTINATION include
-        CONFIGURATIONS Release)
-        
-install(TARGETS tinyscheme tinyscheme_static
-        EXPORT ${PROJECT_NAME}
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        INCLUDES DESTINATION include
-        CONFIGURATIONS Debug)
+        RUNTIME DESTINATION bin/$<CONFIG>
+        LIBRARY DESTINATION lib/$<CONFIG>
+        ARCHIVE DESTINATION lib/$<CONFIG>
+        INCLUDES DESTINATION include)
 
 install(DIRECTORY include/
         DESTINATION include
