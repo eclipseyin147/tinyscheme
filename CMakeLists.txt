@@ -61,14 +61,14 @@ install(DIRECTORY include/
 install(EXPORT ${PROJECT_NAME}Targets
         FILE ${PROJECT_NAME}Targets.cmake
         NAMESPACE ${PROJECT_NAME}::
-        DESTINATION share/${PROJECT_NAME})
+        DESTINATION lib/cmake/${PROJECT_NAME})
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in"
         "${PROJECT_NAME}Config.cmake"
-        INSTALL_DESTINATION share/${PROJECT_NAME}
+        INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
 )
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-        DESTINATION share/${PROJECT_NAME})
+        DESTINATION lib/cmake/${PROJECT_NAME})
