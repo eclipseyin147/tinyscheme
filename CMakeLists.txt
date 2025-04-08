@@ -47,16 +47,16 @@ target_compile_definitions(tinyscheme_static PRIVATE USE_INTERFACE=1 STANDALONE=
 target_compile_definitions(tinyscheme PRIVATE USE_INTERFACE=1 STANDALONE=0)
 
 
-install(TARGETS tinyscheme tinyscheme_static
-        EXPORT ${PROJECT_NAME}
-        RUNTIME DESTINATION bin/$<CONFIG>
-        LIBRARY DESTINATION lib/$<CONFIG>
-        ARCHIVE DESTINATION lib/$<CONFIG>
-        INCLUDES DESTINATION include)
+
 
 install(DIRECTORY include/
         DESTINATION include
         FILES_MATCHING PATTERN "*.h")
+
+install(TARGETS tinyscheme tinyscheme_static
+        EXPORT ${PROJECT_NAME}
+        INCLUDES DESTINATION "include"
+)
 
 #install(EXPORT ${PROJECT_NAME}
 #        FILE "tinyschemeTargets.cmake"
